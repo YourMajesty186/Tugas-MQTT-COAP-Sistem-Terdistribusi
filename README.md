@@ -49,6 +49,11 @@ mqtt-coap-replication/
    ```bash
    mosquitto -c config/mosquitto.conf -v
    ```
+4. Setelah broker dan CoAP server aktif, jalankan conversion server dari root repositori:
+   ```bash
+   python src/converter/conversion_server.py
+   ```
+   Server membaca `config/config.json` dan menulis log ke `results/raw_logs/converter_log.csv`.
 
 ---
 
