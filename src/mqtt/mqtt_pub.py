@@ -40,8 +40,21 @@ def main():
     mqtt_cfg = cfg.get("mqtt", cfg)
     exp_cfg = cfg.get("experiment", cfg)
 
-    broker = args.broker or mqtt_cfg.get("broker") or mqtt_cfg.get("mqtt_broker_ip", "127.0.0.1")
-    port = args.port or int(mqtt_cfg.get("port") or mqtt_cfg.get("mqtt_broker_port", 1883))
+    broker = (
+        args.broker
+        or mqtt_cfg.get("broker_host")
+        or mqtt_cfg.get("broker")
+        or mqtt_cfg.get("mqtt_broker_ip", "127.0.0.1")
+    )
+    port = (
+        args.port
+        if args.port is not None
+        else int(
+            mqtt_cfg.get("broker_port")
+            or mqtt_cfg.get("port")
+            or mqtt_cfg.get("mqtt_broker_port", 1883)
+        )
+    )
     topic = args.topic or mqtt_cfg.get("topic_mqtt_to_coap", "iot/sensor/mqtt2coap")
     payload_size = args.payload_size or int(exp_cfg.get("payload_size_bytes", 1024))
 
