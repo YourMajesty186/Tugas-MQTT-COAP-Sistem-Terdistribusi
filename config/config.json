@@ -1,0 +1,19 @@
+{
+  "mqtt": {
+    "broker_host": "127.0.0.1",
+    "broker_port": 1883,
+    "topic_mqtt_to_coap": "iot/sensor/mqtt2coap",
+    "topic_coap_to_mqtt": "iot/actuator/coap2mqtt"
+  },
+  "coap": {
+    "server_host": "127.0.0.1",
+    "server_port": 5683,
+    "post_resource": "actuator/data",
+    "get_resource": "sensor/data",
+    "poll_interval_sec": 1.0
+  },
+  "experiment": {
+    "rates_msg_per_sec": [10, 20],
+    "payload_size_bytes": 1024
+  }
+}
